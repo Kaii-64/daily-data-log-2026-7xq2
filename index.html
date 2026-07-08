@@ -13,7 +13,7 @@
     <link rel="manifest" href="./manifest.webmanifest" />
     <link rel="icon" href="./icon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="./icon-180.png" />
-    <link rel="stylesheet" href="./styles.css?v=20260708-1015" />
+    <link rel="stylesheet" href="./styles.css?v=20260708-1025" />
   </head>
   <body>
     <div class="app-shell">
@@ -56,13 +56,12 @@
                 <p class="section-kicker">UPDATE</p>
                 <h2>今日更新</h2>
               </div>
-              <span id="saveState">项目数据</span>
+              <div class="entry-meta">
+                <strong id="entryDateText">今天</strong>
+                <span id="saveState">项目数据</span>
+              </div>
             </div>
             <form id="entryForm" class="entry-form">
-              <div class="entry-date-pill" aria-label="记录日期">
-                <span>日期</span>
-                <strong id="entryDateText">今天</strong>
-              </div>
               <input id="dateInput" name="date" type="hidden" required />
               <label class="entry-field value-field">
                 <span>数值</span>
@@ -191,6 +190,6 @@
       </nav>
     </div>
 
-    <script src="./app.js?v=20260708-1015"></script>
+    <script src="./app.js?v=20260708-1025"></script>
   </body>
 </html>
