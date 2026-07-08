@@ -567,9 +567,38 @@ main {
 
 .entry-form {
   display: grid;
-  grid-template-columns: 1fr 1fr auto;
-  gap: 10px;
+  grid-template-columns: 124px minmax(0, 1fr) 42px;
+  gap: 8px;
   align-items: end;
+}
+
+.quick-entry {
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(247, 251, 253, 0.98) 100%);
+  border-color: rgba(197, 213, 225, 0.88);
+  box-shadow: 0 12px 24px rgba(24, 36, 58, 0.07);
+}
+
+.entry-heading {
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.entry-heading span {
+  min-height: 28px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 9px;
+  border-radius: 999px;
+  color: #31516f;
+  background: #edf6fb;
+  font-size: 11px;
+  font-weight: 850;
+}
+
+.entry-field {
+  min-width: 0;
 }
 
 label {
@@ -586,13 +615,27 @@ label span {
 
 input {
   width: 100%;
-  height: 44px;
-  border: 1px solid var(--line);
+  height: 42px;
+  border: 1px solid rgba(205, 217, 228, 0.92);
   border-radius: 8px;
-  padding: 0 11px;
+  padding: 0 9px;
   color: var(--ink);
   background: #fbfcfe;
   outline: none;
+  font-size: 14px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+input::placeholder {
+  color: #9aa6b5;
+  font-weight: 750;
 }
 
 input:focus {
@@ -611,13 +654,23 @@ input:focus {
 }
 
 .primary-button {
-  height: 44px;
-  min-width: 78px;
+  height: 42px;
+  min-width: 42px;
   gap: 6px;
-  padding: 0 13px;
+  padding: 0 10px;
   color: white;
-  background: var(--blue);
+  background: linear-gradient(135deg, #2f6df6, #1d55d8);
   font-weight: 850;
+  box-shadow: 0 10px 18px rgba(47, 109, 246, 0.22);
+}
+
+.quick-entry .primary-button {
+  width: 42px;
+  padding: 0;
+}
+
+.quick-entry .primary-button span {
+  display: none;
 }
 
 .primary-button svg,
@@ -771,12 +824,16 @@ input:focus {
   .value-value {
     font-size: 31px;
   }
+}
+
+@media (max-width: 340px) {
 
   .entry-form {
-    grid-template-columns: 1fr;
+    grid-template-columns: 0.88fr 1.12fr;
   }
 
   .primary-button {
+    grid-column: 1 / -1;
     width: 100%;
   }
 }
