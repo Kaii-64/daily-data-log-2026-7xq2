@@ -567,7 +567,7 @@ main {
 
 .entry-form {
   display: grid;
-  grid-template-columns: 124px minmax(0, 1fr) 42px;
+  grid-template-columns: 78px minmax(0, 1fr) 46px;
   gap: 8px;
   align-items: end;
 }
@@ -601,6 +601,33 @@ main {
   min-width: 0;
 }
 
+.entry-date-pill {
+  min-width: 0;
+  height: 42px;
+  display: grid;
+  align-content: center;
+  gap: 2px;
+  padding: 0 10px;
+  border: 1px solid rgba(205, 217, 228, 0.92);
+  border-radius: 8px;
+  background: #fbfcfe;
+}
+
+.entry-date-pill span {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 850;
+  line-height: 1;
+}
+
+.entry-date-pill strong {
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 1.05;
+  white-space: nowrap;
+}
+
 label {
   display: block;
 }
@@ -622,7 +649,7 @@ input {
   color: var(--ink);
   background: #fbfcfe;
   outline: none;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 800;
   font-variant-numeric: tabular-nums;
 }
@@ -655,7 +682,7 @@ input:focus {
 
 .primary-button {
   height: 42px;
-  min-width: 42px;
+  min-width: 46px;
   gap: 6px;
   padding: 0 10px;
   color: white;
@@ -665,7 +692,7 @@ input:focus {
 }
 
 .quick-entry .primary-button {
-  width: 42px;
+  width: 46px;
   padding: 0;
 }
 
