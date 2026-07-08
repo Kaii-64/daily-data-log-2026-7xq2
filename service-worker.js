@@ -1,9 +1,9 @@
-const CACHE_NAME = "data-record-app-v5";
+const CACHE_NAME = "data-record-app-v6";
 const ASSETS = [
   "./",
   "./index.html",
-  "./styles.css?v=20260708-1015",
-  "./app.js?v=20260708-1015",
+  "./styles.css?v=20260708-1025",
+  "./app.js?v=20260708-1025",
   "./data.json",
   "./manifest.webmanifest",
   "./icon.svg",
