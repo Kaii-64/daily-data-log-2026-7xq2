@@ -33,6 +33,7 @@ const els = {
   chartDetail: document.getElementById("chartDetail"),
   entryForm: document.getElementById("entryForm"),
   dateInput: document.getElementById("dateInput"),
+  entryDateText: document.getElementById("entryDateText"),
   valueInput: document.getElementById("valueInput"),
   saveState: document.getElementById("saveState"),
   recordsList: document.getElementById("recordsList"),
@@ -140,6 +141,11 @@ function todayIso() {
   const offset = date.getTimezoneOffset();
   const local = new Date(date.getTime() - offset * 60000);
   return local.toISOString().slice(0, 10);
+}
+
+function formatEntryDate(dateText) {
+  if (!dateText || !dateText.includes("-")) return "今天";
+  return `今天 ${dateText.slice(5).replace("-", "/")}`;
 }
 
 function enrich(records) {
@@ -731,6 +737,7 @@ async function init() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(appRecords));
   els.saveState.textContent = "项目数据";
   els.dateInput.value = todayIso();
+  els.entryDateText.textContent = formatEntryDate(els.dateInput.value);
   render();
 
   if ("serviceWorker" in navigator && location.protocol !== "file:") {
