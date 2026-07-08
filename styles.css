@@ -567,8 +567,8 @@ main {
 
 .entry-form {
   display: grid;
-  grid-template-columns: 78px minmax(0, 1fr) 46px;
-  gap: 8px;
+  grid-template-columns: minmax(0, 1fr) 54px;
+  gap: 10px;
   align-items: end;
 }
 
@@ -582,50 +582,38 @@ main {
 
 .entry-heading {
   align-items: flex-start;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
-.entry-heading span {
-  min-height: 28px;
+.entry-meta {
+  display: grid;
+  justify-items: end;
+  gap: 4px;
+  text-align: right;
+}
+
+.entry-meta strong {
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.entry-meta span {
+  min-height: 24px;
   display: inline-flex;
   align-items: center;
-  padding: 0 9px;
+  padding: 0 8px;
   border-radius: 999px;
   color: #31516f;
   background: #edf6fb;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 850;
 }
 
 .entry-field {
   min-width: 0;
-}
-
-.entry-date-pill {
-  min-width: 0;
-  height: 42px;
-  display: grid;
-  align-content: center;
-  gap: 2px;
-  padding: 0 10px;
-  border: 1px solid rgba(205, 217, 228, 0.92);
-  border-radius: 8px;
-  background: #fbfcfe;
-}
-
-.entry-date-pill span {
-  color: var(--muted);
-  font-size: 10px;
-  font-weight: 850;
-  line-height: 1;
-}
-
-.entry-date-pill strong {
-  color: var(--ink);
-  font-size: 13px;
-  font-weight: 900;
-  line-height: 1.05;
-  white-space: nowrap;
 }
 
 label {
@@ -642,14 +630,14 @@ label span {
 
 input {
   width: 100%;
-  height: 42px;
+  height: 48px;
   border: 1px solid rgba(205, 217, 228, 0.92);
   border-radius: 8px;
-  padding: 0 9px;
+  padding: 0 14px;
   color: var(--ink);
   background: #fbfcfe;
   outline: none;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 800;
   font-variant-numeric: tabular-nums;
 }
@@ -681,8 +669,8 @@ input:focus {
 }
 
 .primary-button {
-  height: 42px;
-  min-width: 46px;
+  height: 48px;
+  min-width: 54px;
   gap: 6px;
   padding: 0 10px;
   color: white;
@@ -692,7 +680,7 @@ input:focus {
 }
 
 .quick-entry .primary-button {
-  width: 46px;
+  width: 54px;
   padding: 0;
 }
 
@@ -854,13 +842,7 @@ input:focus {
 }
 
 @media (max-width: 340px) {
-
-  .entry-form {
-    grid-template-columns: 0.88fr 1.12fr;
-  }
-
-  .primary-button {
-    grid-column: 1 / -1;
-    width: 100%;
+  .quick-entry .primary-button span {
+    display: none;
   }
 }
