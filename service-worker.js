@@ -1,4 +1,4 @@
-const CACHE_NAME = "data-record-app-v1";
+const CACHE_NAME = "data-record-app-v2";
 const ASSETS = [
   "./",
   "./index.html",
