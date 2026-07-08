@@ -50,6 +50,30 @@
             </div>
           </section>
 
+          <section class="entry-panel quick-entry">
+            <div class="panel-heading entry-heading">
+              <div>
+                <p class="section-kicker">UPDATE</p>
+                <h2>今日更新</h2>
+              </div>
+              <span id="saveState">本机已保存</span>
+            </div>
+            <form id="entryForm" class="entry-form">
+              <label class="entry-field date-field">
+                <span>日期</span>
+                <input id="dateInput" name="date" type="date" required />
+              </label>
+              <label class="entry-field value-field">
+                <span>数值</span>
+                <input id="valueInput" name="value" type="number" inputmode="decimal" step="0.01" min="0" placeholder="1027486.73" required />
+              </label>
+              <button class="primary-button" type="submit" aria-label="记录数值">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+                <span>记录</span>
+              </button>
+            </form>
+          </section>
+
           <section class="metric-grid" aria-label="关键指标">
             <article class="metric-tile">
               <span>累计变化</span>
@@ -103,27 +127,6 @@
             </div>
             <svg id="valueChart" class="chart-svg" viewBox="0 0 720 300" role="img" aria-label="数值走势线形图"></svg>
             <div class="chart-detail" id="chartDetail" aria-live="polite"></div>
-          </section>
-
-          <section class="entry-panel">
-            <div class="panel-heading">
-              <h2>今日记录</h2>
-              <span id="saveState">本机已保存</span>
-            </div>
-            <form id="entryForm" class="entry-form">
-              <label>
-                <span>日期</span>
-                <input id="dateInput" name="date" type="date" required />
-              </label>
-              <label>
-                <span>数值</span>
-                <input id="valueInput" name="value" type="number" inputmode="decimal" step="0.01" min="0" placeholder="1027486.73" required />
-              </label>
-              <button class="primary-button" type="submit" aria-label="记录数值">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
-                <span>记录</span>
-              </button>
-            </form>
           </section>
         </section>
 
