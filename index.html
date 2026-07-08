@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f6f8fb" />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="数据记录" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <title>数据记录</title>
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./icon-180.png" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <div>
+          <p class="eyebrow">Data Log</p>
+          <h1>数据记录</h1>
+        </div>
+        <div class="target-pill" id="targetPill">阶段 5万</div>
+      </header>
+
+      <main>
+        <section class="view active" id="view-dashboard" aria-label="仪表盘">
+          <section class="hero-panel">
+            <div class="hero-grid" aria-hidden="true"></div>
+            <div class="hero-topline">
+              <span id="latestDate">2026-07-07</span>
+              <span class="status-chip" id="statusChip">下降中</span>
+            </div>
+            <p class="hero-label">当前数值</p>
+            <div class="value-value" id="currentValue">1,027,486.73</div>
+            <div class="change-row">
+              <span id="dailyAmount">-1,616.40</span>
+              <span id="dailyPct">-0.16%</span>
+            </div>
+            <div class="progress-block">
+              <div class="progress-labels">
+                <span id="targetLabel">5万阶段</span>
+                <span id="distanceLabel">还差 51,616.40</span>
+              </div>
+              <div class="progress-track" aria-hidden="true">
+                <div class="progress-fill" id="progressFill"></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="metric-grid" aria-label="关键指标">
+            <article class="metric-tile">
+              <span>累计变化</span>
+              <strong id="cumulativeChange">-1,616.40</strong>
+            </article>
+            <article class="metric-tile">
+              <span>当前阶段</span>
+              <strong id="currentTarget">50,000.00</strong>
+            </article>
+            <article class="metric-tile">
+              <span>阶段达成</span>
+              <strong id="stageProgress">-3.23%</strong>
+            </article>
+            <article class="metric-tile">
+              <span>还差数值</span>
+              <strong id="remainingAmount">51,616.40</strong>
+            </article>
+          </section>
+
+          <section class="daily-panel">
+            <div class="panel-heading compact-heading">
+              <div>
+                <p class="section-kicker">DAILY</p>
+                <h2>每日数值</h2>
+              </div>
+              <span>最近记录</span>
+            </div>
+            <div class="daily-value-list" id="dashboardRecords"></div>
+          </section>
+
+          <section class="chart-panel">
+            <div class="panel-heading chart-heading">
+              <div>
+                <p class="section-kicker">TREND</p>
+                <h2 id="chartTitle">阶段走势</h2>
+              </div>
+              <div class="chart-switch" role="tablist" aria-label="图表模式">
+                <button class="chart-mode active" type="button" data-chart-mode="stage" role="tab" aria-selected="true">阶段</button>
+                <button class="chart-mode" type="button" data-chart-mode="change" role="tab" aria-selected="false">变化</button>
+              </div>
+            </div>
+            <div class="legend">
+              <span id="legendPrimary"><i class="legend-value"></i>数值</span>
+              <span id="legendSecondary"><i class="legend-target"></i>阶段</span>
+            </div>
+            <div class="period-switch" role="tablist" aria-label="图表周期">
+              <button class="period-mode active" type="button" data-period-mode="day" role="tab" aria-selected="true">日</button>
+              <button class="period-mode" type="button" data-period-mode="week" role="tab" aria-selected="false">周</button>
+              <button class="period-mode" type="button" data-period-mode="month" role="tab" aria-selected="false">月</button>
+              <button class="period-mode" type="button" data-period-mode="year" role="tab" aria-selected="false">年</button>
+            </div>
+            <svg id="valueChart" class="chart-svg" viewBox="0 0 720 300" role="img" aria-label="数值走势线形图"></svg>
+            <div class="chart-detail" id="chartDetail" aria-live="polite"></div>
+          </section>
+
+          <section class="entry-panel">
+            <div class="panel-heading">
+              <h2>今日记录</h2>
+              <span id="saveState">本机已保存</span>
+            </div>
+            <form id="entryForm" class="entry-form">
+              <label>
+                <span>日期</span>
+                <input id="dateInput" name="date" type="date" required />
+              </label>
+              <label>
+                <span>数值</span>
+                <input id="valueInput" name="value" type="number" inputmode="decimal" step="0.01" min="0" placeholder="1027486.73" required />
+              </label>
+              <button class="primary-button" type="submit" aria-label="记录数值">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+                <span>记录</span>
+              </button>
+            </form>
+          </section>
+        </section>
+
+        <section class="view" id="view-records" aria-label="每日记录">
+          <section class="records-panel">
+            <div class="panel-heading">
+              <h2>每日记录</h2>
+              <button class="icon-button" id="exportButton" type="button" aria-label="导出 CSV">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg>
+              </button>
+            </div>
+            <div class="records-list" id="recordsList"></div>
+          </section>
+        </section>
+
+        <section class="view" id="view-plan" aria-label="阶段计划">
+          <section class="plan-panel">
+            <div class="panel-heading">
+              <h2>阶段阶梯</h2>
+              <span id="baseLabel">基准 2026-07-06</span>
+            </div>
+            <div class="target-ladder" id="targetLadder"></div>
+          </section>
+
+          <section class="plan-panel">
+            <div class="panel-heading">
+              <h2>当前节奏</h2>
+              <span id="daysLabel">2天</span>
+            </div>
+            <div class="pace-list">
+              <div>
+                <span>平均每日变化</span>
+                <strong id="avgDailyChange">-1,616.40</strong>
+              </div>
+              <div>
+                <span>阶段差额</span>
+                <strong id="paceDistance">51,616.40</strong>
+              </div>
+              <div>
+                <span>下个台阶</span>
+                <strong id="nextStep">5万</strong>
+              </div>
+            </div>
+          </section>
+        </section>
+      </main>
+
+      <nav class="bottom-tabs" aria-label="主导航">
+        <button class="tab active" type="button" data-view="dashboard" aria-label="仪表盘">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13h6V4H4v9Zm10 7h6V4h-6v16ZM4 20h6v-3H4v3Z"/></svg>
+          <span>总览</span>
+        </button>
+        <button class="tab" type="button" data-view="records" aria-label="每日记录">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h10M7 12h10M7 19h10M4 5h.01M4 12h.01M4 19h.01"/></svg>
+          <span>记录</span>
+        </button>
+        <button class="tab" type="button" data-view="plan" aria-label="阶段计划">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21a9 9 0 1 0-9-9h5a4 4 0 1 1 4 4v5Z"/></svg>
+          <span>阶段</span>
+        </button>
+      </nav>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
