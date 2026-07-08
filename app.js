@@ -75,7 +75,7 @@ function loadRecords() {
 function saveRecords(records) {
   appRecords = sortedRecords(records);
   localStorage.setItem(STORAGE_KEY, JSON.stringify(appRecords));
-  els.saveState.textContent = "本机已保存";
+  els.saveState.textContent = "本机暂存";
 }
 
 function sortedRecords(records) {
@@ -729,7 +729,7 @@ async function init() {
   targets = [...sourceData.targetSteps].sort((a, b) => a - b);
   appRecords = mergeSourceAndLocal(sourceData);
   localStorage.setItem(STORAGE_KEY, JSON.stringify(appRecords));
-  els.saveState.textContent = sourceData.updatedAt === fallbackData.updatedAt ? "项目数据已加载" : "已同步项目";
+  els.saveState.textContent = "项目数据";
   els.dateInput.value = todayIso();
   render();
 
